@@ -1,27 +1,22 @@
 #include <time.h>
 #include "fibonacci.h"
-#include <unistd.h>
-#include <signal.h>
 
 enum {Matrix=0, Recursive=1, Loop=2, Formula=3};
 
 using namespace std;
-using namespace std::chrono;
 
-//typedef chrono::duration<long int, std::ratio<1, 1000000> > timedelta_t;
 void eval_fibonacci_timecomplexity(int num_entries, vector< vector<double> > *perf_matrix_pt);
-static void alarm_handler(int signo);
 
 int main(int , const char**)
 {
-    vector<int> num_entries {5, 10, 20, 40, 60, 70};
+    vector<int> num_entries {5, 10, 20, 40, 60};
     vector< vector<double> > performance(4);
 
-    signal(SIGALRM, alarm_handler);
     for(auto n : num_entries)
     {
-	alarm(5);
+	//interrupt = false;
     	eval_fibonacci_timecomplexity(n, &performance);
+	cout << endl;
     }
 
     for(auto method : performance)
@@ -49,15 +44,7 @@ void eval_fibonacci_timecomplexity(int num_entries, vector< vector<double> > *pe
     clock_t stop = clock();
 
     perf_mat_pt->at(Matrix).push_back((double)(stop - start)/CLOCKS_PER_SEC);
-    cout<< "MATRIX -  " << perf_mat_pt->at(Matrix).back() << " milliseconds for " << num_entries << " entries\n";
-    // -------------------------------------------------------------------------------------------------------------
-    
-    start = clock(); 
-    n = recursive((int)num_entries);
-    stop = clock();
-
-    perf_mat_pt->at(Recursive).push_back((double)(stop - start)/CLOCKS_PER_SEC);
-    cout<< "NAIVE_RECURSION -  " << perf_mat_pt->at(Recursive).back() << " milliseconds for " << num_entries << " entries\n";
+    cout<< "MATRIX " << n  << " -  " << perf_mat_pt->at(Matrix).back() << " milliseconds for " << num_entries << " entries\n";
     // -------------------------------------------------------------------------------------------------------------
     
     start = clock(); 
@@ -73,12 +60,18 @@ void eval_fibonacci_timecomplexity(int num_entries, vector< vector<double> > *pe
     stop = clock();
     
     perf_mat_pt->at(Formula).push_back((double)(stop - start)/CLOCKS_PER_SEC);
-    cout<< "BINETS_FORMULA -  " << perf_mat_pt->at(Formula).back() << " milliseconds for " << num_entries << " entries\n";
+    cout<< "BINETS_FORMULA " << n  << " -  " << perf_mat_pt->at(Formula).back() << " milliseconds for " << num_entries << " entries\n";
+    // -------------------------------------------------------------------------------------------------------------
+    
+    if( num_entries < 50  )
+    { 
+	    start = clock(); 
+	    n = recursive((int)num_entries);
+	    stop = clock();
+
+	    perf_mat_pt->at(Recursive).push_back((double)(stop - start)/CLOCKS_PER_SEC);
+	    cout<< "NAIVE_RECURSION " << n  << " -  " << perf_mat_pt->at(Recursive).back() << " milliseconds for " << num_entries << " entries\n";
+    }
     // -------------------------------------------------------------------------------------------------------------
 }
 
-static void alarm_handler(int signo)
-{
-    perror("TIMEOUT exception: ");
-    cout << "Signo " << signo << endl;
-}
