@@ -1,5 +1,7 @@
 #include <time.h>
 #include "fibonacci.h"
+#include <unistd.h>
+#include <signal.h>
 
 enum {Matrix=0, Recursive=1, Loop=2, Formula=3};
 
@@ -8,15 +10,17 @@ using namespace std::chrono;
 
 //typedef chrono::duration<long int, std::ratio<1, 1000000> > timedelta_t;
 void eval_fibonacci_timecomplexity(int num_entries, vector< vector<double> > *perf_matrix_pt);
+static void alarm_handler(int signo);
 
 int main(int , const char**)
 {
     vector<int> num_entries {5, 10, 20, 40, 60, 70};
     vector< vector<double> > performance(4);
 
-
+    signal(SIGALRM, alarm_handler);
     for(auto n : num_entries)
     {
+	alarm(5);
     	eval_fibonacci_timecomplexity(n, &performance);
     }
 
@@ -71,4 +75,10 @@ void eval_fibonacci_timecomplexity(int num_entries, vector< vector<double> > *pe
     perf_mat_pt->at(Formula).push_back((double)(stop - start)/CLOCKS_PER_SEC);
     cout<< "BINETS_FORMULA -  " << perf_mat_pt->at(Formula).back() << " milliseconds for " << num_entries << " entries\n";
     // -------------------------------------------------------------------------------------------------------------
+}
+
+static void alarm_handler(int signo)
+{
+    perror("TIMEOUT exception: ");
+    cout << "Signo " << signo << endl;
 }
