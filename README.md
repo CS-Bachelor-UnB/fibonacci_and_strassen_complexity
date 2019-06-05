@@ -24,6 +24,7 @@ calcular todos os primeiros:
 quando for o caso**. Faça um gráfico com os tempos para cada algoritmo.
 
 b) O método 1.3 falha em dar a resposta certa para qual termo (testar até encontrar erro) ?
+> O cálculo utilizando a fórmula de Binet falha a partir do 40th termo.
 
 c) Os tempos obtidos estão de acordo com a complexidade teórica esperada? Justifique. 
 
