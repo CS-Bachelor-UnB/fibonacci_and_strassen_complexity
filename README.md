@@ -20,6 +20,8 @@ calcular todos os primeiros:
 * 60 termos
 * 70 termos
 
+![alt text](https://raw.githubusercontent.com/CS-Bachelor-UnB/fibonacci_and_strassen_complexity/master/assets/fibonacci_plot1.png)
+
 **Use o tempo gasto para os problemas menores para estimar o tempo dos problemas maiores
 quando for o caso**. Faça um gráfico com os tempos para cada algoritmo.
 
