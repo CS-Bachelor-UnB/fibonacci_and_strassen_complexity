@@ -43,3 +43,7 @@ Os valores de x e devem ser escolhidos tal que fique clara a diferença de compl
 b) A seguir responda: os resultados obtidos estão de acordo com a complexidade esperada?
 Explique. Para que tamanhos de n a multiplicação matrizes normal é melhor? A partir de
 que valor de n algoritmo de Strassen ganha da multiplicação tradicional? 
+
+
+## 3) How to Compile and Run it?
+> intructions to follow shortly
