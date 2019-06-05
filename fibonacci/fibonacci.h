@@ -21,7 +21,7 @@ using namespace std;
 
 long long recursive(int n);
 long long loop(int n);
-int binets_formula(int n);
+long long binets_formula(int n);
 long long matrix(long long n);
 
 //
