@@ -61,7 +61,7 @@ int eval_fibonacci_timecomplexity(string method, int num_entries, vector< vector
 		auto elapsed = std::chrono::high_resolution_clock::now() - start;
 
 		cout << "Matrix for " << num_entries << " yields: " << n.back() << endl;
-		perf_mat_pt->at(Matrix).push_back(std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count());
+		perf_mat_pt->at(Matrix).push_back(std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count());
 	    	
 		// merge results with previously obtained results and sort
 		result_mat_pt->at(Matrix).insert(result_mat_pt->at(Matrix).end(), n.begin(), n.end());
@@ -81,7 +81,7 @@ int eval_fibonacci_timecomplexity(string method, int num_entries, vector< vector
 	
 		auto elapsed = std::chrono::high_resolution_clock::now() - start;
 		cout << "Loop for " << num_entries << " yields: " << n.back() << endl;
-		perf_mat_pt->at(Loop).push_back(std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count());
+		perf_mat_pt->at(Loop).push_back(std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count());
 
 		// merge results with previously obtained results and sort
 		result_mat_pt->at(Loop).insert(result_mat_pt->at(Loop).end(), n.begin(), n.end());
@@ -101,7 +101,7 @@ int eval_fibonacci_timecomplexity(string method, int num_entries, vector< vector
 	
 		auto elapsed = std::chrono::high_resolution_clock::now() - start;
 		cout << "Formula for " << num_entries << " yields: " << n.back() << endl;
-		perf_mat_pt->at(Formula).push_back(std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count());
+		perf_mat_pt->at(Formula).push_back(std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count());
 		
 		// merge results with previously obtained results and sort
 		result_mat_pt->at(Formula).insert(result_mat_pt->at(Formula).end(), n.begin(), n.end());
@@ -121,7 +121,7 @@ int eval_fibonacci_timecomplexity(string method, int num_entries, vector< vector
 	
 		auto elapsed = std::chrono::high_resolution_clock::now() - start;
 		cout << "Recursive for " << num_entries << " yields: " << n.back() << endl;
-		perf_mat_pt->at(Recursive).push_back(std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count());
+		perf_mat_pt->at(Recursive).push_back(std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count());
 		
 		// merge results with previously obtained results and sort
 		result_mat_pt->at(Recursive).insert(result_mat_pt->at(Recursive).end(), n.begin(), n.end());
