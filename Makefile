@@ -1,8 +1,8 @@
 #
 # ------------- DEFINES VARIABLES ------------------- #
 #
-CC = gcc
-CFLAGS = -O0 -Wall -Iinclude
+CXX = g++
+CXXFLAGS = -O3 -Iinclude
 
 #
 # ------------- TARGETS DIRECTORIES ---------------- #
@@ -29,13 +29,16 @@ LIST_LINKS = $(addprefix $(ROOT_DIR)/, $(LINKS))
 #
 # ------------- DEFINES THE COMPILATION STEPS -------------- #
 #
-# .PHONY:	depend clean
+.PHONY: all clean links
 
 all: 	$(LIST)
 		@echo Source files have been successfully compiled
 
-$(BIN)%:	$(SOURCE)%.c | BIN_DIR
-	$(CC) $(INCLUDES) $< $(CFLAGS) -o $@
+$(BIN)strassen_main: $(SOURCE)strassen.c | BIN_DIR
+	$(CC)  $< -o $@
+
+$(BIN)fibonacci_main:	$(SOURCE)fibonacci_main.cpp $(SOURCE)fibonacci_matrix.cpp $(SOURCE)fibonacci_recursive.cpp $(SOURCE)fibonacci_loop.cpp $(SOURCE)fibonacci_formula.cpp  | BIN_DIR
+	$(CXX) $(INCLUDES) $(SOURCE)fibonacci_main.cpp $(SOURCE)fibonacci_matrix.cpp $(SOURCE)fibonacci_recursive.cpp $(SOURCE)fibonacci_loop.cpp $(SOURCE)fibonacci_formula.cpp  $(CXXFLAGS) -o $@
 
 links:	$(LIST_LINKS)
 		@echo Symbolic links for main executables have been created in root folder
