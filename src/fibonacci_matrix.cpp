@@ -4,8 +4,6 @@
 
 long long matrix(long long  n)
 {
-    long long temp=n;  // For printing the resultant Matrix
-
     n=abs(n);   // We take absolute value for calculation
 
     Matrix rslt(1,0,0,1);  // Resultant Matrix
@@ -18,15 +16,6 @@ long long matrix(long long  n)
         base=base*base;
         n>>=1;
     }
-
-    // Uncomment below line to see Required Matrix..
-    // printMatrix(temp, rslt);
-
-    //
-    // [ rslt.a   rslt.b ]     [Fib(n+1)  Fib(n)  ]
-    //                    =>
-    // [ rslt.c   rslt.d ]     [Fib(n)    Fib(n-1)]
-    //
 
     return rslt.c;  // Fib(n)
 }

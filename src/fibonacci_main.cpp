@@ -47,10 +47,6 @@ int eval_fibonacci_timecomplexity(string method, int num_entries, vector< vector
 {
 	
 	vector< long long > n;
-	int sign=1;
-
-	if(num_entries<0 && abs(num_entries)%2==0)   // if N is negative and divisible by 2 then Nth fibonacci must be negative
-		sign=-1;
 
 	if(method.compare("matrix")==0)
 	{	
