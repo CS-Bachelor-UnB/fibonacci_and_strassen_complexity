@@ -17,8 +17,8 @@ calcular todos os primeiros:
 * ~~10 termos~~
 * ~~20 termos~~
 * ~~40 termos~~
-* 60 termos
-* 70 termos
+* ~~60 termos~~
+* ~~70 termos~~
 
 ![alt text](https://raw.githubusercontent.com/CS-Bachelor-UnB/fibonacci_and_strassen_complexity/master/assets/fibonacci_plot1.png)
 
@@ -33,8 +33,11 @@ c) Os tempos obtidos estão de acordo com a complexidade teórica esperada? Just
 
 d) Qual o maior termo de Fibonacci que você consegue calcular usando qualquer
 algoritmo? Qual o motivo disto?
+> infinito em teoria pois a série de Fibonacci é não-convergente. Na prática, depende do tamanho da memória RAM e do tempo disponível para fazer o calculo.
 
 ## 2) A multiplicação matrizes normal O(n3) deve ser comparado com o algoritmo de Strassen
+
+## *Implementado, mas não respondido*
 
 a) Faça um gráfico onde x é a dimensão das matrizes multiplicadas e y é o tempo.
 Os valores de x e devem ser escolhidos tal que fique clara a diferença de complexidades
@@ -46,4 +49,20 @@ que valor de n algoritmo de Strassen ganha da multiplicação tradicional?
 
 
 ## 3) How to Compile and Run it?
-> intructions to follow shortly
+
+Na pasta raiz, execute:
+    
+    make
+    make links
+    
+Pronto. Os dois executáveis estarão no diretório raiz com os nomes de fibonacci_main e strassen_main. Para executar fibonacci, rode:
+
+    ./fibonacci_main
+    
+Para executar Strassen, rode:
+    
+    ./strassen_main <size_of_matrix>
+    
+Para limpar o diretório, rode:
+
+    make clean
