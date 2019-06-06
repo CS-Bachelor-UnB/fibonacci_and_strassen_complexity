@@ -37,7 +37,6 @@ all: 	$(LIST)
 $(BIN)%:	$(SOURCE)%.c | BIN_DIR
 	$(CC) $(INCLUDES) $< $(CFLAGS) -o $@
 
-
 links:	$(LIST_LINKS)
 		@echo Symbolic links for main executables have been created in root folder
 
